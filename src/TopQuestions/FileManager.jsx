@@ -180,7 +180,14 @@ function FileManager() {
               }
             />
           ) : (
-            <div>{it?.name}</div>
+            <div
+              onDoubleClick={() => {
+                setEditingId(it?.id);
+                setNewName(it?.name);
+              }}
+            >
+              {it?.name}
+            </div>
           )}
 
           <div
