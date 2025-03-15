@@ -1,0 +1,113 @@
+/* For very small screens (small phones) - max-width: 575px */
+@media (max-width: 576px) {
+  /* Portrait */
+  @media (orientation: portrait) {
+    /* Styles for small phones in portrait mode */
+    .container {
+      width: 100%;
+      background-color: #f8bbd0;
+      padding: 15px;
+    }
+  }
+
+  /* Landscape */
+  @media (orientation: landscape) {
+    /* Styles for small phones in landscape mode */
+    .container {
+      background-color: #a09e9e;
+      font-size: 14px;
+    }
+  }
+}
+
+/* For small to medium-sized screens (tablets) - min-width: 576px, max-width: 768px */
+@media (min-width: 576px) and (max-width: 768px) {
+  /* Portrait */
+  @media (orientation: portrait) {
+    /* Styles for tablets in portrait mode */
+    .container {
+      width: 90%;
+      background-color: #e1f5fe;
+      padding: 20px;
+    }
+  }
+
+  /* Landscape */
+  @media (orientation: landscape) {
+    /* Styles for tablets in landscape mode */
+    .container {
+      width: 75%;
+      background-color: #ffecb3;
+      padding: 20px;
+    }
+  }
+}
+
+/* For medium to large screens (small laptops and desktops) - min-width: 769px, max-width: 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Portrait */
+  @media (orientation: portrait) {
+    /* Styles for small laptops/desktops in portrait mode */
+    .container {
+      width: 80%;
+      background-color: #c8e6c9;
+      padding: 30px;
+    }
+  }
+
+  /* Landscape */
+  @media (orientation: landscape) {
+    /* Styles for small laptops/desktops in landscape mode */
+    .container {
+      width: 70%;
+      background-color: #ffcc80;
+      padding: 30px;
+    }
+  }
+}
+
+/* For large screens (desktops) - min-width: 1025px */
+@media (min-width: 1025px) {
+  /* Portrait */
+  @media (orientation: portrait) {
+    /* Styles for desktops in portrait mode */
+    .container {
+      width: 70%;
+      background-color: #e0f7fa;
+      padding: 40px;
+    }
+  }
+
+  /* Landscape */
+  @media (orientation: landscape) {
+    /* Styles for desktops in landscape mode */
+    .container {
+      width: 60%;
+      background-color: #c5cae9;
+      padding: 40px;
+    }
+  }
+}
+
+/* For very large screens (large desktops or TVs) - min-width: 1200px */
+@media (min-width: 1200px) {
+  /* Portrait */
+  @media (orientation: portrait) {
+    /* Styles for very large screens in portrait mode */
+    .container {
+      width: 70%;
+      background-color: #e1f5fe;
+      padding: 50px;
+    }
+  }
+
+  /* Landscape */
+  @media (orientation: landscape) {
+    /* Styles for very large screens in landscape mode */
+    .container {
+      width: 60%;
+      background-color: #ffb74d;
+      padding: 50px;
+    }
+  }
+}
