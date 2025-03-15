@@ -184,6 +184,7 @@ function FileManager() {
           )}
 
           <div
+            style={{ cursor: "pointer" }}
             onClick={() =>
               level != 0 &&
               dispatch({
@@ -194,10 +195,19 @@ function FileManager() {
           >
             Delete
           </div>
-          <div onClick={() => setEditingId(it?.id)}>Rename</div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setEditingId(it?.id);
+              setNewName(it?.name);
+            }}
+          >
+            Rename
+          </div>
           {it?.type == "folder" && (
             <>
               <div
+                style={{ cursor: "pointer" }}
                 onClick={() =>
                   dispatch({
                     type: "ADD_FOLDER",
@@ -208,6 +218,7 @@ function FileManager() {
                 +Folder
               </div>
               <div
+                style={{ cursor: "pointer" }}
                 onClick={() =>
                   dispatch({
                     type: "ADD_FILE",
