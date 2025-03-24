@@ -16,6 +16,7 @@ import { StatePropsParent } from "./UseStateProps/StatePropsParent";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Practice from "./Practice/Practice";
+import DebounceThrottle from "./SystemDesign/DebounceThrottle";
 
 const sections = [
   {
@@ -44,7 +45,6 @@ const sections = [
       { topicId: "css-position", topicName: "CSS Position" },
     ],
   },
-
   {
     id: "REACT_QS",
     defaultTopic: "file-manager",
@@ -59,9 +59,11 @@ const sections = [
   },
   {
     id: "FE_SYS_DESIGN",
-    defaultTopic: "",
+    defaultTopic: "debounce-throttle",
     sectionName: "Frontend Sys Design",
-    topics: [],
+    topics: [
+      { topicId: "debounce-throttle", topicName: "Debouncing and Throttling" },
+    ],
   },
   {
     id: "PRACTICE",
@@ -144,7 +146,7 @@ export default function App() {
                   setTopic(tp?.topicId);
                 }}
               >
-                CSS Media Query
+                {tp?.topicName}
               </button>
             ))}
           </div>
@@ -174,7 +176,27 @@ export default function App() {
         </div>
       )}
 
-      {section == "FE_SYS_DESIGN" && <>Hello</>}
+      {section == "FE_SYS_DESIGN" && (
+        <div>
+          {
+            <>
+              <div style={{ marginBottom: "5rem" }}>
+                {sections?.[4]?.topics?.map((tp, i) => (
+                  <button
+                    style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                    onClick={() => {
+                      setTopic(tp?.topicId);
+                    }}
+                  >
+                    {tp?.topicName}
+                  </button>
+                ))}
+              </div>
+              {topic == "debounce-throttle" && <DebounceThrottle />}
+            </>
+          }
+        </div>
+      )}
 
       {section == "REACT_QS" && (
         <div style={{ marginBottom: "2rem" }}>

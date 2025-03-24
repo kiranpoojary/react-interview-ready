@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import json from "./fileinfo.json";
 const container = {
   textAlign: "left",
   paddingLeft: "20px",
@@ -44,10 +43,44 @@ function FileList({ items }) {
 }
 
 function Practice() {
-  const [data, setData] = useState(json);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: "root",
+      type: "folder",
+      children: [],
+    },
+  ]);
+
+  function onAddFolder(folderName, parentId) {
+    function addFolder(items) {
+      return items?.map((it) => {
+        if (it?.id == parentId) {
+          it.children = [
+            ...it.children,
+            { name: folderName, type: "folder", children: [] },
+          ];
+          return it;
+        } else if (d?.children) {
+          it.children = addFolder(it?.children);
+          return it;
+        } else return it;
+      });
+    }
+    setData(addFolder(data));
+  }
+
+  function addFile(fileName, parentId) {
+    //
+  }
+
+  function deleteFileFolder(id) {
+    //
+  }
+
   return (
     <div>
-      <FileList items={data} />
+      <FileList items={data} onAddFolder={onAddFolder} />
     </div>
   );
 }
