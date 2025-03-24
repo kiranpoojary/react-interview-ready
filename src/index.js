@@ -20,25 +20,24 @@ const routes = createBrowserRouter([
     errorElement: <h1>Ooops</h1>,
   },
   {
-    path: "/signup",
-    element: <h1>Signup Page Here</h1>,
-    errorElement: <h1>Ooops</h1>,
-  },
-  {
     path: "/dashboard",
     element: <Dashboard />,
     errorElement: <h1>Ooops</h1>,
   },
   {
     path: "/admin",
-    // element: <MasterLayout />,
+    element: <MasterLayout />,
     children: [
       {
         path: "category",
-        element: <MasterLayout />,
+        // element: <MasterLayout />,
         children: [
           { path: "add-category", element: <h1>Add Category</h1> },
           { path: "add-sub-category", element: <h1>Add Sub Category</h1> },
+          {
+            path: "*",
+            element: <h1>404</h1>,
+          },
         ],
       },
       {
@@ -47,6 +46,10 @@ const routes = createBrowserRouter([
         errorElement: <h1>Ooops</h1>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <h1>404</h1>,
   },
 ]);
 

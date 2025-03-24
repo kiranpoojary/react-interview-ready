@@ -1,7 +1,9 @@
 // import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
 export function Login() {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function onLogin(e) {
     e.preventDefault();
@@ -17,6 +19,15 @@ export function Login() {
       {/* The input has a name attribute so it can be captured by FormData */}
       <input id="name" name="name" type="text" placeholder="Enter Name" />
       <button type="submit">Login Now</button>
+      &nbsp;
+      <button
+        type="submit"
+        onClick={() => {
+          navigate("/", { state: { landOn: "REACT_ROUTING" } });
+        }}
+      >
+        &lt;&lt;&nbsp;Back
+      </button>
     </form>
   );
 }

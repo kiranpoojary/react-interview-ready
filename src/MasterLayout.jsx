@@ -1,11 +1,22 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function MasterLayout() {
+  const navigate = useNavigate();
   return (
     <div>
       <div style={{ border: "1px solid red", height: "10vh", width: "100vw" }}>
         Header
+        <div>back</div>
+        &nbsp;
+        <button
+          type="submit"
+          onClick={() => {
+            navigate("/", { state: { landOn: "REACT_ROUTING" } });
+          }}
+        >
+          &lt;&lt;&nbsp;Back
+        </button>
       </div>
       <div
         style={{

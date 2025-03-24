@@ -13,158 +13,192 @@ import { Memoize } from "./UseMemo/Memoize";
 import { CounterReducer } from "./UseReducer/CounterReducer";
 import { UseRef } from "./UseRef/UseRef";
 import { StatePropsParent } from "./UseStateProps/StatePropsParent";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import Practice from "./Practice/Practice";
+
+const sections = [
+  {
+    id: "REACT_HOOKS",
+    defaultTopic: "reducer",
+    sectionName: "React Hooks",
+    topics: [
+      { topicId: "usereducer", topicName: "useReducer", desc: "" },
+      { topicId: "useref", topicName: "useRef", desc: "" },
+      { topicId: "usecontext", topicName: "useContext", desc: "" },
+      { topicId: "usememo", topicName: "useMemo", desc: "" },
+      { topicId: "useform", topicName: "useForm", desc: "" },
+      { topicId: "usecallback", topicName: "useCallback", desc: "" },
+      { topicId: "uselayout", topicName: "useLayoutEffect", desc: "" },
+      { topicId: "state-props", topicName: "State & Props", desc: "" },
+      { topicId: "customHook", topicName: "Custom Hook", desc: "" },
+    ],
+  },
+  {
+    id: "HTML_CSS",
+    defaultTopic: "css-mediaq",
+    sectionName: "HTML & CSS",
+    topics: [
+      { topicId: "css-mediaq", topicName: "CSS Media Query" },
+      { topicId: "htmlform", topicName: "HTML Form" },
+      { topicId: "css-position", topicName: "CSS Position" },
+    ],
+  },
+
+  {
+    id: "REACT_QS",
+    defaultTopic: "file-manager",
+    sectionName: "Most Asked react Implementaions",
+    topics: [{ topicId: "file-manager", topicName: "File Manager" }],
+  },
+  {
+    id: "REACT_ROUTING",
+    defaultTopic: "",
+    sectionName: "React Routing",
+    topics: [],
+  },
+  {
+    id: "FE_SYS_DESIGN",
+    defaultTopic: "",
+    sectionName: "Frontend Sys Design",
+    topics: [],
+  },
+  {
+    id: "PRACTICE",
+    defaultTopic: "",
+    sectionName: "Practice",
+    topics: [],
+  },
+];
 
 export default function App() {
   const [topic, setTopic] = useState("reducer");
+  const [section, setSection] = useState("PRACTICE"); //REACT_HOOKS
+  const loc = useLocation();
+
+  useEffect(() => {
+    setSection(loc?.state?.landOn || "REACT_HOOKS");
+  }, [loc]);
 
   return (
     <>
-      {topic == "reducer" && <CounterReducer />}
-      {topic == "ref" && <UseRef />}
-      {topic == "context" && <Parent />}
-      {topic == "memo" && <Memoize />}
-      {topic == "form" && <MyForm />}
-      {topic == "callback" && <UseCallback />}
-      {topic == "layout" && <UseLayoutEff />}
-      {topic == "customHook" && <MyCounterComponent />}
-      {/* {topic == "imperative" && <CounterReducer />} */}
-      {/* {topic == "debug" && <CounterReducer />}  */}
-      {topic == "htmlform" && <Registration />}
-      {topic == "css-mediaq" && <MediaQuery />}
-      {topic == "state-props" && <StatePropsParent />}
-      {topic == "css-position" && <Positions />}
-      {topic == "file-manager" && <FileManager />}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <button
-        onClick={() => {
-          setTopic("reducer");
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "start",
+          marginBottom: "4rem",
         }}
       >
-        useReducer
-      </button>
-      <button
-        onClick={() => {
-          setTopic("ref");
-        }}
-      >
-        useRef
-      </button>
-      <button
-        onClick={() => {
-          setTopic("context");
-        }}
-      >
-        useContext
-      </button>
-      <button
-        onClick={() => {
-          setTopic("memo");
-        }}
-      >
-        useMemo
-      </button>
-      <button
-        onClick={() => {
-          setTopic("form");
-        }}
-      >
-        useForm
-      </button>
-      <button
-        onClick={() => {
-          setTopic("callback");
-        }}
-      >
-        useCallback
-      </button>
-      <button
-        onClick={() => {
-          setTopic("layout");
-        }}
-      >
-        useLayout
-      </button>
-
-      <button
-        onClick={() => {
-          setTopic("imperative");
-        }}
-      >
-        useImperativeHandle
-      </button>
-      <button
-        onClick={() => {
-          setTopic("debug");
-        }}
-      >
-        useDebugValue
-      </button>
-      <button
-        onClick={() => {
-          setTopic("state-props");
-        }}
-      >
-        State Props
-      </button>
-
-      <button
-        onClick={() => {
-          setTopic("customHook");
-        }}
-      >
-        custom Hook
-      </button>
-
-      <div style={{ marginTop: "2rem" }}>
-        <button
-          onClick={() => {
-            setTopic("htmlform");
-          }}
-        >
-          HTML Form
-        </button>
-        <button
-          onClick={() => {
-            setTopic("css-mediaq");
-          }}
-        >
-          CSS Media Query
-        </button>
-        <button
-          onClick={() => {
-            setTopic("css-position");
-          }}
-        >
-          CSS Position
-        </button>
+        {sections?.map((sec, i) => (
+          <div style={{ marginRight: "2rem" }}>
+            <button
+              style={{ backgroundColor: sec?.id == section && "cyan" }}
+              onClick={() => {
+                setSection(sec?.id);
+                setTopic(sec?.topics?.[0]?.topicId);
+              }}
+            >
+              {sec?.sectionName}
+            </button>
+          </div>
+        ))}
       </div>
-      <div style={{ marginTop: "2rem" }}>
-        <h2>Product Based Company Qs</h2>
-        <button
-          onClick={() => {
-            setTopic("file-manager");
-          }}
-        >
-          File Manager
-        </button>
-        <br />
-        <br />
-      </div>
-      <div>
-        <hr />
-        <h1> try this routes(router implementation in index.js file)</h1>
-        <ul>/login</ul>
-        <ul>/signup</ul>
-        <ul>/admin/category</ul>
-        <ul>/admin/category/add-category</ul>
-        <ul>/admin/category/add-sub-category</ul>
-        <ul>/admin/products</ul>
-      </div>
+      <hr />
+
+      {section == "REACT_HOOKS" && (
+        <>
+          <div style={{ marginBottom: "5rem" }}>
+            {sections?.[0]?.topics?.map((tp, i) => (
+              <button
+                key={`topic-${i}`}
+                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                onClick={() => {
+                  setTopic(tp?.topicId);
+                }}
+              >
+                {tp?.topicName}
+              </button>
+            ))}
+          </div>
+          {topic == "usereducer" && <CounterReducer />}
+          {topic == "useref" && <UseRef />}
+          {topic == "usecontext" && <Parent />}
+          {topic == "usememo" && <Memoize />}
+          {topic == "useform" && <MyForm />}
+          {topic == "usecallback" && <UseCallback />}
+          {topic == "uselayout" && <UseLayoutEff />}
+          {topic == "state-props" && <StatePropsParent />}
+          {topic == "customHook" && <MyCounterComponent />}
+          {/* {topic == "imperative" && <CounterReducer />} */}
+          {/* {topic == "debug" && <CounterReducer />}  */}
+        </>
+      )}
+
+      {section == "HTML_CSS" && (
+        <>
+          <div style={{ marginBottom: "5rem" }}>
+            {sections?.[1]?.topics?.map((tp, i) => (
+              <button
+                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                onClick={() => {
+                  setTopic(tp?.topicId);
+                }}
+              >
+                CSS Media Query
+              </button>
+            ))}
+          </div>
+          {topic == "css-mediaq" && <MediaQuery />}
+          {topic == "css-position" && <Positions />}
+          {topic == "htmlform" && <Registration />}
+        </>
+      )}
+
+      {section == "REACT_ROUTING" && (
+        <div>
+          <hr />
+          <h1> try this routes(router implementation in index.js file)</h1>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Link to="/login"> /login</Link>
+            <Link to="/admin/category"> /admin/category</Link>
+            <Link to="/admin/category/add-category">
+              /admin/category/add-category
+            </Link>
+            <Link to="/admin/category/add-sub-category">
+              {" "}
+              /admin/category/add-sub-category
+            </Link>
+            <Link to="/admin/products"> /admin/products</Link>
+            <Link to="/admin/random-path"> /admin/random-path</Link>
+          </div>
+        </div>
+      )}
+
+      {section == "FE_SYS_DESIGN" && <>Hello</>}
+
+      {section == "REACT_QS" && (
+        <div style={{ marginBottom: "2rem" }}>
+          <div style={{ marginBottom: "5rem" }}>
+            {sections?.[2]?.topics?.map((tp, i) => (
+              <button
+                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                onClick={() => {
+                  setTopic(tp?.topicId);
+                }}
+              >
+                {tp?.topicName}
+              </button>
+            ))}
+          </div>
+          {topic == "file-manager" && <FileManager />}
+        </div>
+      )}
+
+      {section == "PRACTICE" && (
+        <div style={{ marginBottom: "2rem" }}>
+          <Practice />
+        </div>
+      )}
     </>
   );
 }

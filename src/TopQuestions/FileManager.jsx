@@ -85,7 +85,6 @@ function FileManager() {
   }
 
   function renameItem(folderStructure, newName, id) {
-    console.log(id);
     return folderStructure?.map((f) => {
       if (f?.id == id) {
         setNewName(null);
@@ -134,7 +133,7 @@ function FileManager() {
       <React.Fragment key={it.id}>
         <div
           style={{
-            marginLeft: `${level * 30}px`,
+            marginLeft: `${level * 20}px`,
             display: "flex",
             justifyContent: "space-around",
             width: it?.type == "folder" ? "25rem" : "15rem",
@@ -142,6 +141,7 @@ function FileManager() {
         >
           {it?.type == "folder" && it?.isOpen && (
             <div
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 dispatch({
                   type: "COLLAPSE_FOLDER",
@@ -154,6 +154,7 @@ function FileManager() {
           )}
           {it?.type == "folder" && !it?.isOpen && (
             <div
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 dispatch({
                   type: "EXPAND_FOLDER",
@@ -190,18 +191,20 @@ function FileManager() {
             </div>
           )}
 
-          <div
-            style={{ cursor: "pointer" }}
-            onClick={() =>
-              level != 0 &&
-              dispatch({
-                type: "DELETE",
-                payload: { id: it?.id },
-              })
-            }
-          >
-            Delete
-          </div>
+          {level > 0 && (
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                level != 0 &&
+                dispatch({
+                  type: "DELETE",
+                  payload: { id: it?.id },
+                })
+              }
+            >
+              Delete
+            </div>
+          )}
           <div
             style={{ cursor: "pointer" }}
             onClick={() => {
