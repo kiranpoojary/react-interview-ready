@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function DebounceThrottle() {
   const [debounceRequests, setDebounceRequests] = useState([]);
   const [throttleRequests, setThrottleRequests] = useState([]);
+  const lastCalledTime = useRef(0); // to persist across renders
 
   function debouncer(fn, delay) {
     let timer;
@@ -15,13 +16,11 @@ function DebounceThrottle() {
   }
 
   function throttler(fn, delay) {
-    let lastCalled = 0;
     return function (...args) {
-      const now = new Date().getTime();
-      if (now - lastCalled >= delay) {
-        lastCalled = now;
-        fn(...args);
-      }
+      let nowTime = new Date().getTime();
+      if (nowTime - lastCalledTime.current < delay) return;
+      lastCalledTime.current = nowTime;
+      fn(...args);
     };
   }
 
@@ -62,6 +61,15 @@ function DebounceThrottle() {
           <div>Seached:&nbsp;{txt}</div>
         ))}
       </div>
+      <button
+        style={{ height: "2rem" }}
+        onClick={() => {
+          setDebounceRequests([]);
+          setThrottleRequests([]);
+        }}
+      >
+        clear
+      </button>
       <div
         style={{
           border: "0.5px solid grey",
