@@ -1,12 +1,44 @@
-.progress-container{
+/* Progress Bar */
+.progress-container {
     border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;
 }
 
-.progressbar{
+.progressbar {
     background-color: rgb(10, 207, 10);
     border-radius: 10px;
     text-align: right;
-    transition: 0.5s ease-in
+    transition: 0.5s ease-in;
+}
+
+/* Auto Complete */
+.autocomplete-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+}
+
+.autocomplete-input{
+    width: 300px;
+}
+
+.auto-result-container{
+    width: 305px;
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid grey;
+    max-height: 500px;
+}
+
+.auto-result{
+    padding: 5px;
+    display: block;
+    text-align: left;
+}
+
+.auto-result:hover{
+    background-color: rgb(227, 238, 238);
+    cursor: pointer;
 }

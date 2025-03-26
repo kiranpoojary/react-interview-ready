@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import Practice from "./Practice/Practice";
 import DebounceThrottle from "./SystemDesign/DebounceThrottle";
 import Progressbar from "./TopQuestions/Progressbar";
+import AutoComplete from "./TopQuestions/AutoComplete";
 
 const sections = [
   {
@@ -53,6 +54,7 @@ const sections = [
     topics: [
       { topicId: "file-manager", topicName: "File Manager" },
       { topicId: "progressbar", topicName: "Progressbar" },
+      { topicId: "autocomplete", topicName: "AutoComplete" },
     ],
   },
   {
@@ -223,6 +225,7 @@ export default function App() {
           {topic == "progressbar" && <Progressbar progress={2} />}
           {topic == "progressbar" && <Progressbar progress={4} />}
           {topic == "progressbar" && <Progressbar progress={67} />}
+          {topic == "autocomplete" && <AutoComplete />}
         </div>
       )}
 
