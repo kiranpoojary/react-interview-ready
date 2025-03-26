@@ -17,6 +17,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Practice from "./Practice/Practice";
 import DebounceThrottle from "./SystemDesign/DebounceThrottle";
+import Progressbar from "./TopQuestions/Progressbar";
 
 const sections = [
   {
@@ -49,7 +50,10 @@ const sections = [
     id: "REACT_QS",
     defaultTopic: "file-manager",
     sectionName: "Most Asked react Implementaions",
-    topics: [{ topicId: "file-manager", topicName: "File Manager" }],
+    topics: [
+      { topicId: "file-manager", topicName: "File Manager" },
+      { topicId: "progressbar", topicName: "Progressbar" },
+    ],
   },
   {
     id: "REACT_ROUTING",
@@ -74,7 +78,7 @@ const sections = [
 ];
 
 export default function App() {
-  const [topic, setTopic] = useState("reducer");
+  const [topic, setTopic] = useState("usereducer");
   const [section, setSection] = useState("PRACTICE"); //REACT_HOOKS
   const loc = useLocation();
 
@@ -203,7 +207,10 @@ export default function App() {
           <div style={{ marginBottom: "5rem" }}>
             {sections?.[2]?.topics?.map((tp, i) => (
               <button
-                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                style={{
+                  marginLeft: "1rem",
+                  backgroundColor: tp?.topicId == topic && "cyan",
+                }}
                 onClick={() => {
                   setTopic(tp?.topicId);
                 }}
@@ -213,6 +220,9 @@ export default function App() {
             ))}
           </div>
           {topic == "file-manager" && <FileManager />}
+          {topic == "progressbar" && <Progressbar progress={2} />}
+          {topic == "progressbar" && <Progressbar progress={4} />}
+          {topic == "progressbar" && <Progressbar progress={67} />}
         </div>
       )}
 
