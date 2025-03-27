@@ -19,6 +19,7 @@ import Practice from "./Practice/Practice";
 import DebounceThrottle from "./SystemDesign/DebounceThrottle";
 import Progressbar from "./TopQuestions/Progressbar";
 import AutoComplete from "./TopQuestions/AutoComplete";
+import OTPComponent from "./TopQuestions/OTPComponent";
 
 const sections = [
   {
@@ -55,6 +56,7 @@ const sections = [
       { topicId: "file-manager", topicName: "File Manager" },
       { topicId: "progressbar", topicName: "Progressbar" },
       { topicId: "autocomplete", topicName: "AutoComplete" },
+      { topicId: "otp", topicName: "OTP Component" },
     ],
   },
   {
@@ -205,7 +207,11 @@ export default function App() {
       )}
 
       {section == "REACT_QS" && (
-        <div style={{ marginBottom: "2rem" }}>
+        <div
+          style={{
+            marginBottom: "2rem",
+          }}
+        >
           <div style={{ marginBottom: "5rem" }}>
             {sections?.[2]?.topics?.map((tp, i) => (
               <button
@@ -226,9 +232,9 @@ export default function App() {
           {topic == "progressbar" && <Progressbar progress={4} />}
           {topic == "progressbar" && <Progressbar progress={67} />}
           {topic == "autocomplete" && <AutoComplete />}
+          {topic == "otp" && <OTPComponent maxbox={6} />}
         </div>
       )}
-
       {section == "PRACTICE" && (
         <div style={{ marginBottom: "2rem" }}>
           <Practice />
