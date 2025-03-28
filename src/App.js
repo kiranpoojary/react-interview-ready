@@ -20,6 +20,7 @@ import DebounceThrottle from "./SystemDesign/DebounceThrottle";
 import Progressbar from "./TopQuestions/Progressbar";
 import AutoComplete from "./TopQuestions/AutoComplete";
 import OTPComponent from "./TopQuestions/OTPComponent";
+import Pagination from "./TopQuestions/Pagination";
 
 const sections = [
   {
@@ -57,6 +58,7 @@ const sections = [
       { topicId: "progressbar", topicName: "Progressbar" },
       { topicId: "autocomplete", topicName: "AutoComplete" },
       { topicId: "otp", topicName: "OTP Component" },
+      { topicId: "pagination", topicName: "Pagination Component" },
     ],
   },
   {
@@ -243,6 +245,7 @@ export default function App() {
               }}
             />
           )}
+          {topic == "pagination" && <Pagination />}
         </div>
       )}
       {section == "PRACTICE" && (
