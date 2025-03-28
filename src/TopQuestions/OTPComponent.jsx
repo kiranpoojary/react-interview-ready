@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function OTPComponent({ maxbox }) {
+function OTPComponent({ maxbox = 6, onAllFilled }) {
   const [otpDigits, setOtpDigits] = useState(new Array(maxbox).fill(""));
   const boxRef = useRef([]);
 
@@ -15,6 +15,7 @@ function OTPComponent({ maxbox }) {
     newDigits[i] = val;
     setOtpDigits(newDigits);
     val && boxRef.current?.[i + 1]?.focus();
+    if (val && i == maxbox - 1 && onAllFilled) onAllFilled(newDigits);
   }
 
   function handleKeyDown(e, i) {

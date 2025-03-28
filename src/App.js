@@ -100,7 +100,7 @@ export default function App() {
         }}
       >
         {sections?.map((sec, i) => (
-          <div style={{ marginRight: "2rem" }}>
+          <div key={i} style={{ marginRight: "2rem" }}>
             <button
               style={{ backgroundColor: sec?.id == section && "cyan" }}
               onClick={() => {
@@ -149,6 +149,7 @@ export default function App() {
           <div style={{ marginBottom: "5rem" }}>
             {sections?.[1]?.topics?.map((tp, i) => (
               <button
+                key={i}
                 style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
                 onClick={() => {
                   setTopic(tp?.topicId);
@@ -191,6 +192,7 @@ export default function App() {
               <div style={{ marginBottom: "5rem" }}>
                 {sections?.[4]?.topics?.map((tp, i) => (
                   <button
+                    key={i}
                     style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
                     onClick={() => {
                       setTopic(tp?.topicId);
@@ -215,6 +217,7 @@ export default function App() {
           <div style={{ marginBottom: "5rem" }}>
             {sections?.[2]?.topics?.map((tp, i) => (
               <button
+                key={i}
                 style={{
                   marginLeft: "1rem",
                   backgroundColor: tp?.topicId == topic && "cyan",
@@ -232,7 +235,14 @@ export default function App() {
           {topic == "progressbar" && <Progressbar progress={4} />}
           {topic == "progressbar" && <Progressbar progress={67} />}
           {topic == "autocomplete" && <AutoComplete />}
-          {topic == "otp" && <OTPComponent maxbox={6} />}
+          {topic == "otp" && (
+            <OTPComponent
+              maxbox={6}
+              onAllFilled={(otp) => {
+                console.log({ otp });
+              }}
+            />
+          )}
         </div>
       )}
       {section == "PRACTICE" && (
