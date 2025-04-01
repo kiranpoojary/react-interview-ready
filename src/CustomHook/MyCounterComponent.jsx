@@ -1,7 +1,7 @@
 import useCounter from "./useCounter";
 
 export function MyCounterComponent() {
-  const { count, incCount, decCount } = useCounter(0);
+  const { count, incCount, decCount } = useCounter(9);
 
   return (
     <>

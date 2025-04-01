@@ -7,6 +7,7 @@ import AppDuplicate from "./ErrorBoundary/AppDuplicate";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import { Login } from "./Login";
 import MasterLayout from "./MasterLayout";
+import { MyCounterComponent } from "./CustomHook/MyCounterComponent";
 
 const routes = createBrowserRouter([
   {
@@ -63,6 +64,7 @@ root.render(
     {/* <ErrorBoundary>
       <AppDuplicate />
     </ErrorBoundary> */}
+    {/* <MyCounterComponent /> */}
     {/* </StrictMode> */}
   </>
 );
