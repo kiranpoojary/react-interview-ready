@@ -21,6 +21,7 @@ import Progressbar from "./TopQuestions/Progressbar";
 import AutoComplete from "./TopQuestions/AutoComplete";
 import OTPComponent from "./TopQuestions/OTPComponent";
 import Pagination from "./TopQuestions/Pagination";
+import OptionSelector from "./TopQuestions/OptionSelector";
 
 const sections = [
   {
@@ -59,6 +60,7 @@ const sections = [
       { topicId: "autocomplete", topicName: "AutoComplete" },
       { topicId: "otp", topicName: "OTP Component" },
       { topicId: "pagination", topicName: "Pagination Component" },
+      { topicId: "optionselector", topicName: "Option Selector" },
     ],
   },
   {
@@ -246,6 +248,7 @@ export default function App() {
             />
           )}
           {topic == "pagination" && <Pagination />}
+          {topic == "optionselector" && <OptionSelector />}
         </div>
       )}
       {section == "PRACTICE" && (

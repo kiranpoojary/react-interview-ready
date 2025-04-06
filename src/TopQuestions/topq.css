@@ -81,3 +81,8 @@
     width: 300px;
     height: 250px;
 }
+
+/* ---------  Options Selector ---------- */
+.options-container{
+    padding-left: 20px;
+}
