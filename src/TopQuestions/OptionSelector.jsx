@@ -110,15 +110,17 @@ function CheckBoxHeirarchy({ data, checkedHistory, setCheckedHistory }) {
 
       function isAllChildChecked(node) {
         if (!node?.children) return newCheckHistory[node.id] || false;
-
-        const allChildChecked = node?.children?.every((ch) =>
-          isAllChildChecked(ch)
-        );
+        let allChildChecked = true;
+        for (const ch of node.children) {
+          const result = isAllChildChecked(ch);
+          if (!result) {
+            allChildChecked = false;
+          }
+        }
         newCheckHistory[node.id] = allChildChecked;
         return allChildChecked;
       }
       checkBoxData?.forEach((d) => isAllChildChecked(d));
-
       return newCheckHistory;
     });
   }
