@@ -89,7 +89,6 @@ export default function OptionSelector() {
         checkedHistory={checkedHistory}
         setCheckedHistory={setCheckedHistory}
       />
-      {JSON.stringify(checkedHistory)}
     </div>
   );
 }
