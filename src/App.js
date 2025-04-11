@@ -125,7 +125,10 @@ export default function App() {
             {sections?.[0]?.topics?.map((tp, i) => (
               <button
                 key={`topic-${i}`}
-                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                style={{
+                  backgroundColor: tp?.topicId == topic && "cyan",
+                  marginLeft: "20px",
+                }}
                 onClick={() => {
                   setTopic(tp?.topicId);
                 }}
@@ -154,7 +157,10 @@ export default function App() {
             {sections?.[1]?.topics?.map((tp, i) => (
               <button
                 key={i}
-                style={{ backgroundColor: tp?.topicId == topic && "cyan" }}
+                style={{
+                  backgroundColor: tp?.topicId == topic && "cyan",
+                  marginLeft: "20px",
+                }}
                 onClick={() => {
                   setTopic(tp?.topicId);
                 }}

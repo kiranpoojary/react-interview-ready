@@ -52,6 +52,7 @@ function DebounceThrottle() {
         <h2>Debouncing</h2>
         <div>
           <input
+            id="debounce"
             type="text"
             placeholder="Search.."
             onChange={(e) => debouncedSearch(e)}
@@ -66,6 +67,8 @@ function DebounceThrottle() {
         onClick={() => {
           setDebounceRequests([]);
           setThrottleRequests([]);
+          document.getElementById("debounce").value = "";
+          document.getElementById("throttle").value = "";
         }}
       >
         clear
@@ -81,6 +84,7 @@ function DebounceThrottle() {
         <h2>Throttling</h2>
         <div>
           <input
+            id="throttle"
             type="text"
             placeholder="Search.."
             onChange={(e) => throttledSearch(e)}
